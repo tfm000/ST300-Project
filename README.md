@@ -1,2 +1,2 @@
 # ST300-Project
-A regression project, focusing on producing a linear model to estimate PE ratios
+LSE ST300 course project, focusing on producing a linear model to estimate PE ratios
