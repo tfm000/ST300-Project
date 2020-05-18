@@ -1,0 +1,51 @@
+---
+title: "ST300 project data preprocessing"
+output:
+  html_document:
+    df_print: paged
+---
+```{r}
+dat <- read.csv("Market_data2019.csv", header=T)
+head(dat)
+```
+
+Look at summary
+
+```{r}
+names(dat)
+summary(dat)
+class(dat$ROE)  # ROE is wrongly viewed as a factor
+```
+
+Some variables are wrongly recognised as factors. 
+
+Converting factors that should be numeric:
+
+ROE, EPS_Growth, Cost_of_Equity, CEO_holding, Institutional_holding
+
+```{r}
+
+
+#strip out % and convert factor to numeric overwriting existing variable
+dat$ROE <-  as.numeric(gsub("[\\%,]", "", dat$ROE))
+dat$EPS_Growth <-  as.numeric(gsub("[\\%,]", "", dat$EPS_Growth))
+dat$Cost_of_equity <-  as.numeric(gsub("[\\%,]", "", dat$Cost_of_Equity))
+dat$CEO_holding <-  as.numeric(gsub("[\\%,]", "", dat$CEO_holding))
+dat$Institutional_holding <-  as.numeric(gsub("[\\%,]", "", dat$Institutional_holding))
+
+
+class(dat$Region) #Region is factor
+class(dat$Industry) #Industry is factor
+class(dat$Number_of_firms) #Integer
+
+
+```
+
+# Saving changes to data in new file
+
+Aftter the changes, save the data into a new file using `write.csv()`
+
+```{r}
+write.csv(dat,'Market_data_clean.csv')
+```
+
