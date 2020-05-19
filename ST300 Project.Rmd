@@ -1,19 +1,15 @@
 # *** ST300 Project *** #
 
 # Loading Our Libraries #
-```{r}
 library(leaps)
 library(ggplot2)
 library(dplyr)
 library(car)
-```
 
 # Loading Our Data #
-```{r}
 data = read.csv("Market_data_clean.csv",header = T)
 head(data)
 names(data)
-```
 
 # Data Cleaning and Checking #
 ```{r}
